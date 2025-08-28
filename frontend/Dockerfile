@@ -1,14 +1,13 @@
-FROM node:18-bullseye
-
-RUN apt-get update && apt-get install -y python3 g++ make libcairo2-dev libjpeg-dev libgif-dev
+FROM node:18-alpine
 
 WORKDIR /app
 
+# install build tools if you need them
+RUN apk add --no-cache python3 g++ make libc6-compat cairo-dev jpeg-dev giflib-dev
+
+# copy project files
 COPY package.json package-lock.json ./
-
-RUN npm install
-
-RUN npm rebuild lightningcss --build-from-source
+RUN npm ci
 
 COPY . .
 

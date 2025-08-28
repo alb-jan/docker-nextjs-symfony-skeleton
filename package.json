@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "docker:build": "docker-compose build --no-cache",
-    "docker:up": "docker-compose up",
-    "docker:down": "docker-compose down -v --remove-orphans"
+    "docker:build": "docker compose build --pull --no-cache",
+    "docker:up": "docker-compose up --build",
+    "docker:down": "docker-compose down -v --remove-orphans",
+    "backend:exec": "docker compose exec backend bash"
   }
 }

@@ -1,0 +1,13 @@
+# Production environment override
+services:
+  backend:
+    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: frankenphp_prod
+      network: host
+    environment:
+      APP_SECRET: ${APP_SECRET}
+      MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
+      MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}

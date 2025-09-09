@@ -18,22 +18,26 @@ VOLUME /app/var/
 # persistent / runtime deps
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
-	acl \
-	file \
-	gettext \
-	git \
-	&& rm -rf /var/lib/apt/lists/*
+    acl \
+    file \
+    gettext \
+    git \
+    libssl-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
-	install-php-extensions \
-		@composer \
-		apcu \
-		intl \
-		opcache \
-		zip \
+    install-php-extensions \
+        @composer \
+        apcu \
+        intl \
+        opcache \
+        zip \
         pdo_mysql \
-      gmp \
-	;
+        gmp \
+    ; \
+    pecl install mongodb \
+    && echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/30-mongodb.ini
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1

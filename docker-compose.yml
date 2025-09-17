@@ -5,7 +5,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     restart: unless-stopped
-    working_dir: /backend
+    working_dir: /app
     environment:
       SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
       MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}

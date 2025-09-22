@@ -11,3 +11,9 @@ npm run docker:build
 ```
 npm run docker:up
 ```
+
+## 3. Run NPM Install in Frontend
+```
+cd frontend
+npm install
+```

@@ -2,19 +2,17 @@
 
 Follow these Quick-Steps, to start coding.
 
-## 1. Install Dependencies
+## 1. Build Docker Containers
 ```
-cd backend
-composer install
+npm run docker:build
 ```
 
 ## 2. Start Docker Containers
 ```
 npm run docker:up
 ```
-## Optional:
 
-### Use Symfony Container Bash
+## 3. Run Composer install in Backend
 ```
-npm run backend:exec
+composer install
 ```

@@ -11,8 +11,3 @@ npm run docker:build
 ```
 npm run docker:up
 ```
-
-## 3. Run Composer install in Backend
-```
-composer install
-```
